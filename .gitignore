@@ -1,0 +1,32 @@
+# Build output of scripts/build.sh
+app/
+app.new/
+src/
+
+# Terraform: local state, provider cache and your own variables (they can
+# hold your organisation ID and secrets). Keep terraform.tfstate safe: it is
+# what lets `terraform destroy` find the application again.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+# Backups made by scripts/deploy.sh when you replace your terraform.tfvars
+terraform.tfvars.*.bak
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Local environment files
+.env
+.env.*
+
+.DS_Store
+
+# Clever Tools link to an application (`clever create` / `clever link`)
+.clever.json

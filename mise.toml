@@ -1,0 +1,18 @@
+# cc-openfront: openfront-light on Clever Cloud's Linux runtime.
+#
+# Clever Cloud runs `mise install` before the build, then the `build` task,
+# then the `run` task. Every setting is an environment variable of the
+# application (OPENFRONT_VERSION, OPENFRONT_BUILD, DOMAIN, ...): see docs/configuration.md.
+
+[tools]
+# openfront-light needs Node >=24.15 <25. "24" resolves to the newest 24.x;
+# scripts/build.sh fails early if it ever gets an older one.
+node = "24"
+
+[tasks.build]
+description = "Download the openfront-light release (or build it from source) into app/"
+run = "bash scripts/build.sh"
+
+[tasks.run]
+description = "Start openfront-light from app/ on $PORT"
+run = "bash scripts/run.sh"

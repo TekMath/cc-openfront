@@ -1,0 +1,54 @@
+# Copy to terraform.tfvars (git-ignored), then pick ONE profile below.
+#
+#   cp terraform.tfvars.example terraform.tfvars
+#   terraform init && terraform apply
+
+# Your Clever Cloud space: orga_xxx, or user_xxx for your personal space
+# (`clever profile` shows it). Or leave it out and export CC_ORGANISATION.
+organisation = "orga_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Application name. Players reach https://<name>.cleverapps.io unless you set
+# `domain`. cleverapps.io names are shared by every Clever Cloud user: pick
+# one nobody took yet.
+name = "my-openfront"
+
+# ---------------------------------------------------------------------------
+# Profile 1: "I just want to play"
+# The prebuilt release (World, Giant World Map, Europe, the Americas, Asia,
+# Africa) on the smallest instance. Pin a version, or leave it out for the
+# latest stable release.
+# ---------------------------------------------------------------------------
+# openfront_version = "v1.0.0"
+
+# ---------------------------------------------------------------------------
+# Profile 2: "my maps"
+# Build from source with the maps you choose (folder names from
+# resources/maps/ in openfront-light; leave openfront_maps out for all of
+# them, ~600 MB). The build runs on a dedicated M instance (4 GB), billed
+# only while it builds.
+# ---------------------------------------------------------------------------
+# openfront_build   = "source"
+# openfront_version = "v1.0.0"
+# openfront_maps    = "world,europe,iceland,japan"
+# build_flavor      = "M"
+
+# ---------------------------------------------------------------------------
+# Profile 3: "my fork"
+# Build your own fork of openfront-light (a tag or a branch). If you modified
+# the code, the AGPL requires you to offer its source to your players.
+# ---------------------------------------------------------------------------
+# openfront_build   = "source"
+# openfront_repo    = "https://github.com/you/openfront-light"
+# openfront_version = "main"
+
+# ---------------------------------------------------------------------------
+# Optional, for every profile
+# ---------------------------------------------------------------------------
+# domain       = "games.example.com" # plus a DNS record, see docs/configuration.md
+# region       = "par"
+# flavor       = "XS"                # S or M for more games at once
+# num_workers  = 1
+# extra_env = {
+#   NODE_OPTIONS      = "--max-old-space-size=768" # raise the heap with a bigger flavor
+#   ADMIN_BOT_API_KEY = "change-me"                # enables the admin bot API
+# }
